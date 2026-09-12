@@ -1,0 +1,13 @@
+---
+import StoreButtons from './StoreButtons.astro';
+import { anyStoreAvailable } from '../data/site';
+---
+
+{anyStoreAvailable && (
+  <div class="mobile-download" data-mobile-download hidden>
+    <StoreButtons campaign="home_bar" compact />
+  </div>
+)}
+{anyStoreAvailable && <script>
+  import '../scripts/mobile-download';
+</script>}

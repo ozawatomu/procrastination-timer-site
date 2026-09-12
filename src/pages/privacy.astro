@@ -1,0 +1,147 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { site } from '../data/site';
+---
+
+<SiteLayout
+  title="Privacy Policy — Procrastination Timer"
+  description="Procrastination Timer collects no data. Timers and settings stay on your device. What each permission is for, how tips are processed and how this website is hosted."
+>
+  <section class="page-heading wrap">
+    <p class="eyebrow">Privacy policy</p>
+    <h1>
+      Private.
+      <br />
+      <span>By design.</span>
+    </h1>
+    <p class="page-intro">
+      The short version, exactly as it appears inside the app:
+    </p>
+  </section>
+  <div class="wrap">
+    <article class="prose">
+      <p class="summary-box">
+        Procrastination Timer collects no data. There are no accounts, no
+        analytics and no ads. Your timers and settings stay on your device. Tips
+        are processed by Google Play or the App Store under their own terms, and
+        the app never sees your payment details.
+      </p>
+      <p class="policy-date">Effective 12 September 2026.</p>
+
+      <h2>Who this covers</h2>
+      <p>
+        Procrastination Timer is a two-stopwatch app for Android 7.0 and later
+        and iOS 15 and later, made by {site.author}. This policy explains what
+        the app does and does not do with your information, and how this website
+        is hosted.
+      </p>
+
+      <h2>Data stored on your device</h2>
+      <p>
+        The app keeps your two timers, the labels you give them and your
+        settings (theme, timer method, notification preference) in its private
+        storage on your device so they are there when you come back. This
+        information is never sent anywhere, and there is no account, so there is
+        nothing about you stored on a server that could need deleting. Resetting
+        the timers clears the totals, and uninstalling the app removes
+        everything.
+      </p>
+
+      <h2>How the timers run in the background</h2>
+      <p>
+        The app records the moment you tap a side and works the totals out from
+        the clock. It does not run a tracking service, does not use your
+        location or sensors, and does not read anything else on your phone.
+      </p>
+
+      <h2>Permissions and why the app asks for them</h2>
+      <ul>
+        <li>
+          <strong>Notifications</strong> (Android: POST_NOTIFICATIONS, and
+          POST_PROMOTED_NOTIFICATIONS on Android 16 and later). Shows the
+          running timer in the notification shade, as a Live Update where
+          supported, and tells you when a Pomodoro, 52/17 or 112/26 block ends.
+          On iPhone the app asks for notification permission for the same
+          block-end alerts.
+        </li>
+        <li>
+          <strong>Exact alarms</strong> (Android: SCHEDULE_EXACT_ALARM on
+          Android 12 and earlier, USE_EXACT_ALARM afterwards). Lets a block-end
+          alert arrive at the exact moment the block finishes, even when the
+          phone is dozing. Alarms are only scheduled while a timer method is on.
+        </li>
+        <li>
+          <strong>Start after reboot</strong> (Android: RECEIVE_BOOT_COMPLETED).
+          Restores the timer notification and any pending block-end alarm after
+          the phone restarts or the app is updated.
+        </li>
+        <li>
+          <strong>Internet</strong> (Android: INTERNET and
+          ACCESS_NETWORK_STATE). Added by the Google Play billing library so the
+          optional tip jar can talk to the store. The app itself makes no
+          network requests.
+        </li>
+      </ul>
+      <p>None of these permissions gives the app access to personal data.</p>
+
+      <h2>Tip jar purchases</h2>
+      <p>
+        The app is free and nothing is locked. If you choose to leave a tip
+        (Chocolate, Coffee, Sandwich or Pizza), the purchase is processed
+        entirely by Google Play or Apple's App Store under their own terms. The
+        app receives only a confirmation that the purchase succeeded and which
+        product it was; it never sees your name, email address or payment
+        details. Google's and Apple's handling of purchase data is described in
+        the{' '}
+        <a href="https://policies.google.com/privacy">Google Privacy Policy</a>{' '}
+        and the{' '}
+        <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.
+      </p>
+
+      <h2>Third-party code</h2>
+      <p>
+        The app contains no analytics, advertising or crash-reporting software.
+        The only third-party code beyond the app framework is the platform
+        billing library needed for the tip jar.
+      </p>
+
+      <h2>This website</h2>
+      <p>
+        This website uses no visitor analytics, tracking cookies or advertising
+        scripts. Fonts and images are served with the site. The live demo on the
+        home page runs entirely in your browser and sends nothing anywhere.
+      </p>
+      <p>
+        Links to Google Play may carry a campaign label identifying this website
+        and the page you came from. The label contains no personal identifier.
+        Google processes store visits under its own policies.
+      </p>
+      <p>
+        The website is hosted on GitHub Pages. Hosting services process the
+        information needed to deliver a page, such as your IP address. See the{' '}
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
+          GitHub General Privacy Statement
+        </a>
+        .
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        The app is suitable for a general audience. Because it collects no data
+        from anyone, it collects no data from children.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If the app's behaviour changes in a way that affects your privacy, this
+        page will be updated and the effective date above revised.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy can be sent to{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </article>
+  </div>
+</SiteLayout>

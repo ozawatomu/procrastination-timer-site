@@ -1,0 +1,26 @@
+---
+import Wordmark from './Wordmark.astro';
+import { site, href } from '../data/site';
+---
+
+<footer class="site-footer wrap">
+  <div class="footer-top">
+    <Wordmark size={32} />
+    <p>Two stopwatches. One honest day.</p>
+  </div>
+  <div class="footer-bottom">
+    <span>
+      © {new Date().getUTCFullYear()} {site.author}
+    </span>
+    <nav aria-label="Footer navigation">
+      <a href={href('/support/')}>Support</a>
+      <a href={href('/privacy/')}>Privacy</a>
+      <a href={`mailto:${site.email}`}>Say hello</a>
+    </nav>
+  </div>
+  <p class="trademark">
+    Google Play and the Google Play logo are trademarks of Google LLC.
+    {site.ios.available &&
+      ' Apple and the App Store are trademarks of Apple Inc.'}
+  </p>
+</footer>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Open Graph image</title>
+    <link rel="stylesheet" href="../src/styles/replica.css" />
+    <style>
+      @font-face {
+        font-family: Lato;
+        src: url('../src/assets/fonts/lato-regular-latin.woff2') format('woff2');
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: Lato;
+        src: url('../src/assets/fonts/lato-bold-latin.woff2') format('woff2');
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: Roboto;
+        src: url('../src/assets/fonts/roboto-regular-latin.woff2')
+          format('woff2');
+        font-weight: 400;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: Roboto, sans-serif;
+        color: #3f4244;
+        background: #f2f2f2;
+      }
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            520px 520px at 900px 330px,
+            #4f8fca42,
+            transparent 70%
+          ),
+          #f2f2f2;
+      }
+      .ring {
+        position: absolute;
+        left: 660px;
+        top: 20px;
+        width: 620px;
+        height: 620px;
+        border: 1px solid #4f8fca33;
+        border-radius: 50%;
+      }
+      .ring::after {
+        content: '';
+        position: absolute;
+        inset: 60px;
+        border: 1px solid #4f8fca26;
+        border-radius: 50%;
+      }
+      .copy {
+        position: absolute;
+        left: 88px;
+        top: 90px;
+        width: 560px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font:
+          700 26px Lato,
+          sans-serif;
+        color: #28343f;
+      }
+      .brand img {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+      }
+      h1 {
+        margin: 54px 0 0;
+        font:
+          700 76px/1 Lato,
+          sans-serif;
+        letter-spacing: -0.035em;
+        color: #28343f;
+      }
+      h1 span {
+        color: #4f8fca;
+      }
+      p {
+        margin: 34px 0 0;
+        font-size: 24px;
+        line-height: 1.5;
+        color: #5f676d;
+      }
+      .tags {
+        margin-top: 36px;
+        font:
+          700 16px Lato,
+          sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #2e5e82;
+      }
+      .phone {
+        position: absolute;
+        left: 820px;
+        top: 70px;
+        width: 300px;
+        padding: 10px;
+        border-radius: 46px;
+        background: #0b1015;
+        box-shadow: 0 40px 80px -30px #28343f88;
+      }
+      .phone-screen {
+        border-radius: 36px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="ring"></div>
+      <div class="copy">
+        <div class="brand">
+          <img src="../public/favicon.svg" alt="" />
+          Procrastination Timer
+        </div>
+        <h1>Two stopwatches.<br /><span>One honest day.</span></h1>
+        <p>Tap what you're doing. See where the hours go.</p>
+        <div class="tags">
+          Free · No ads · No account · Android &amp; iPhone
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="replica" data-timer-replica data-theme="dark">
+            <div class="rp-screen">
+              <div class="rp-panel rp-studying is-selected">
+                <span class="rp-readout">1:32:07</span>
+                <span class="rp-label">Studying</span>
+                <span class="rp-caption"></span>
+              </div>
+              <div class="rp-panel rp-procrastinating">
+                <span class="rp-readout">0:04:51</span>
+                <span class="rp-label">Procrastinating</span>
+                <span class="rp-caption"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

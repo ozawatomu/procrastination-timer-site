@@ -1,0 +1,139 @@
+---
+const steps = [
+  {
+    title: 'Tap what you are doing',
+    body: 'Studying on top, procrastinating below. Tap the side you are on and it starts counting while the other one waits.',
+    art: 'tap',
+  },
+  {
+    title: 'Forget about it',
+    body: 'Lock the phone, switch apps, reboot. The app notes when you tapped and works the totals out from the clock, so nothing drains your battery.',
+    art: 'clock',
+  },
+  {
+    title: 'Face the numbers',
+    body: 'Two totals, side by side, no judgement. Reset when the day is done and start again tomorrow.',
+    art: 'numbers',
+  },
+];
+---
+
+<section class="section wrap" id="how" aria-labelledby="how-title">
+  <div class="section-heading" data-reveal>
+    <p class="eyebrow">How it works</p>
+    <h2 id="how-title">The whole app is one tap.</h2>
+    <p>
+      No setup, no categories, no reports to fill in. Just a running answer to
+      the only question that matters: how much of today went where?
+    </p>
+  </div>
+  <div class="how-grid">
+    {steps.map((step, index) => (
+      <article class="how-card" data-reveal style={`--reveal-order: ${index}`}>
+        <div class="how-art" aria-hidden="true">
+          {step.art === 'tap' && (
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <rect x="20" y="8" width="32" height="56" rx="8" fill="#4F8FCA" />
+              <rect
+                x="20"
+                y="36"
+                width="32"
+                height="28"
+                rx="0"
+                fill="#DBECFC"
+              />
+              <rect x="20" y="56" width="32" height="8" rx="0" fill="#DBECFC" />
+              <path
+                d="M20 56h32v0a8 8 0 0 1-8 8H28a8 8 0 0 1-8-8Z"
+                fill="#DBECFC"
+              />
+              <circle cx="36" cy="36" r="6" fill="#fff" />
+              <circle
+                cx="36"
+                cy="22"
+                r="9"
+                stroke="#fff"
+                stroke-width="2.5"
+                opacity=".9"
+              />
+            </svg>
+          )}
+          {step.art === 'clock' && (
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <circle
+                cx="36"
+                cy="36"
+                r="22"
+                stroke="#4F8FCA"
+                stroke-width="4"
+              />
+              <path
+                d="M36 36 48 24"
+                stroke="#2E5E82"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+              <circle cx="36" cy="36" r="3" fill="#2E5E82" />
+              <path
+                d="M36 6v6M66 36h-6M36 66v-6M6 36h6"
+                stroke="#92C1EB"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+            </svg>
+          )}
+          {step.art === 'numbers' && (
+            <svg width="120" height="72" viewBox="0 0 120 72" fill="none">
+              <rect
+                x="4"
+                y="12"
+                width="52"
+                height="48"
+                rx="10"
+                fill="#4F8FCA"
+              />
+              <rect
+                x="64"
+                y="12"
+                width="52"
+                height="48"
+                rx="10"
+                fill="#fff"
+                stroke="#DBECFC"
+                stroke-width="2"
+              />
+              <path
+                d="M16 36h28M76 36h28"
+                stroke="#fff"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M76 36h28"
+                stroke="#4F8FCA"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 46h16M76 46h12"
+                stroke="#fff"
+                stroke-width="3"
+                stroke-linecap="round"
+                opacity=".8"
+              />
+              <path
+                d="M76 46h12"
+                stroke="#92C1EB"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+            </svg>
+          )}
+        </div>
+        <span class="how-index">0{index + 1}</span>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+      </article>
+    ))}
+  </div>
+</section>

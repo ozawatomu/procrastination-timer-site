@@ -1,0 +1,22 @@
+---
+import type { FaqEntry } from '../data/faq';
+interface Props {
+  entries: FaqEntry[];
+  headingLevel?: 'h2' | 'h3';
+}
+const { entries, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<div class="faq-list">
+  {entries.map((entry) => (
+    <details id={entry.id}>
+      <summary>
+        <Heading>{entry.question}</Heading>
+      </summary>
+      {entry.answer.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+    </details>
+  ))}
+</div>

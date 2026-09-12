@@ -1,0 +1,24 @@
+---
+import StoreButtons from './StoreButtons.astro';
+interface Props {
+  campaign: string;
+}
+const { campaign } = Astro.props;
+---
+
+<section
+  class="final-download wrap"
+  id="download"
+  aria-labelledby="download-title"
+>
+  <p class="eyebrow">YOUR DAY, IN TWO NUMBERS</p>
+  <h2 id="download-title">
+    Start being honest
+    <br />
+    with your time.
+  </h2>
+  <p class="final-lead">
+    Free. No ads. No account. Just two clocks and the truth.
+  </p>
+  <StoreButtons campaign={campaign} />
+</section>

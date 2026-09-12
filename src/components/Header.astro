@@ -1,0 +1,32 @@
+---
+import Wordmark from './Wordmark.astro';
+import { href } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '');
+const isPage = (page: string) => (path.endsWith(page) ? 'page' : undefined);
+---
+
+<header class="site-header wrap">
+  <Wordmark />
+  <nav aria-label="Main navigation">
+    <a class="nav-link" href={`${href('/')}#how`}>
+      How it works
+    </a>
+    <a
+      class="nav-link"
+      href={href('/support/')}
+      aria-current={isPage('/support')}
+    >
+      Support
+    </a>
+    <a
+      class="nav-link"
+      href={href('/privacy/')}
+      aria-current={isPage('/privacy')}
+    >
+      Privacy
+    </a>
+    <a class="nav-cta" href={`${href('/')}#download`}>
+      Get the app
+    </a>
+  </nav>
+</header>

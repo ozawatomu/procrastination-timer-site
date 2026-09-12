@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import light from '../assets/screens/light.png';
+import dark from '../assets/screens/dark.png';
+const shots = [
+  {
+    src: light,
+    caption: 'Light',
+    alt: 'Procrastination Timer in the light theme: Studying 1:32:10 on a blue panel above Procrastinating 0:04:51 on a pale one',
+  },
+  {
+    src: dark,
+    caption: 'Dark',
+    alt: 'Procrastination Timer in the dark theme: Studying 1:32:10 on a slate panel above Procrastinating 0:04:51 on a near-black one',
+  },
+];
+---
+
+<section class="section themes" id="themes" aria-labelledby="themes-title">
+  <div class="wrap">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Themes</p>
+      <h2 id="themes-title">
+        Light for the library.
+        <br />
+        Dark for 2 a.m.
+      </h2>
+      <p>
+        Choose a theme or follow the system. Either way the screen stays two
+        calm blocks of colour with nothing to read but the time.
+      </p>
+    </div>
+    <div class="theme-shots">
+      {shots.map((shot, index) => (
+        <figure
+          class="theme-shot"
+          data-reveal
+          style={`--reveal-order: ${index}`}
+        >
+          <div class="phone">
+            <div class="phone-screen">
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                widths={[280, 480, 640]}
+                sizes="(max-width: 760px) 224px, 280px"
+                width={280}
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <figcaption>{shot.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

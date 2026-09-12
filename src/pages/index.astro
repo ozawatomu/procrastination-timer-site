@@ -1,0 +1,137 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import StoreButtons from '../components/StoreButtons.astro';
+import TimerReplica from '../components/TimerReplica.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Labels from '../components/Labels.astro';
+import Themes from '../components/Themes.astro';
+import Methods from '../components/Methods.astro';
+import Faq from '../components/Faq.astro';
+import FinalDownload from '../components/FinalDownload.astro';
+import MobileDownloadBar from '../components/MobileDownloadBar.astro';
+import { site, absolute, href } from '../data/site';
+import { homeFaq } from '../data/faq';
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['SoftwareApplication', 'MobileApplication'],
+  name: site.name,
+  operatingSystem: 'Android 7.0 or later, iOS 15 or later',
+  applicationCategory: 'UtilitiesApplication',
+  description: site.description,
+  url: absolute('/'),
+  image: absolute('/og.png'),
+  screenshot: absolute('/og.png'),
+  softwareVersion: site.version,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+  author: { '@type': 'Person', name: site.author },
+  featureList: [
+    'Two stopwatches on one screen',
+    'Keeps counting while the app is closed',
+    'Editable labels for each side',
+    'Optional Pomodoro, 52/17 and 112/26 methods',
+    'Light and dark themes',
+    'No accounts, ads or tracking',
+  ],
+  ...(site.android.available ? { installUrl: site.android.url } : {}),
+};
+
+const trust = ['Free', 'No ads', 'No account', 'No tracking', 'Works offline'];
+---
+
+<SiteLayout
+  title="Procrastination Timer: Study vs Procrastination Stopwatch"
+  structuredData={appSchema}
+>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Free · No ads · No account</p>
+      <h1 id="hero-title">
+        Two stopwatches.
+        <br />
+        <span>One honest day.</span>
+      </h1>
+      <p class="hero-lead">
+        Tap Studying when you work and Procrastinating when you don't. Both
+        clocks keep counting, even with the app closed, so you see how the hours
+        really split.
+      </p>
+      <div id="hero-download" class="hero-download">
+        <StoreButtons campaign="home" />
+        <p class="reassurance">
+          For Android 7.0 and later. The iPhone version is on its way.
+        </p>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="stage-ring" aria-hidden="true"></div>
+      <div class="phone">
+        <div class="phone-screen">
+          <TimerReplica
+            id="hero-replica"
+            interactive
+            studyingMs={1477000}
+            procrastinatingMs={372000}
+          />
+        </div>
+      </div>
+      <p class="stage-caption">
+        Live demo. Tap a side to switch, or pause to see the rest.
+      </p>
+    </div>
+  </section>
+
+  <ul class="trust-strip wrap">
+    {trust.map((item) => (
+      <li>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle
+            cx="9"
+            cy="9"
+            r="7.25"
+            stroke="currentColor"
+            stroke-width="1.5"
+          />
+          <path
+            d="m5.5 9.2 2.3 2.3 4.7-4.8"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        {item}
+      </li>
+    ))}
+  </ul>
+
+  <HowItWorks />
+  <Labels />
+  <Themes />
+  <Methods />
+
+  <section class="section wrap" aria-labelledby="faq-title">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title">Short answers.</h2>
+    </div>
+    <Faq entries={homeFaq} />
+    <p class="faq-more">
+      <a class="text-link" href={href('/support/')}>
+        More questions and support <span aria-hidden="true">→</span>
+      </a>
+    </p>
+  </section>
+
+  <FinalDownload campaign="home_end" />
+  <MobileDownloadBar />
+  <script>
+    import '../scripts/reveal';
+  </script>
+</SiteLayout>

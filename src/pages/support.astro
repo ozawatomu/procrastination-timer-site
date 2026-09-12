@@ -1,0 +1,49 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Faq from '../components/Faq.astro';
+import { site } from '../data/site';
+import { faq } from '../data/faq';
+---
+
+<SiteLayout
+  title="Support & FAQ — Procrastination Timer"
+  description="Help with background timers, notifications, Pomodoro and other methods, resetting, renaming labels and restoring tips. Contact the developer."
+>
+  <section class="page-heading wrap">
+    <p class="eyebrow">Support</p>
+    <h1>
+      Here to
+      <br />
+      <span>help.</span>
+    </h1>
+    <p class="page-intro">
+      Most answers are below. For anything else, email{' '}
+      <a href={`mailto:${site.email}`}>{site.email}</a> and you will hear back
+      from the developer, not a bot.
+    </p>
+  </section>
+  <section class="support-grid wrap" aria-labelledby="faq-title">
+    <div>
+      <h2 id="faq-title" class="sr-only">
+        Frequently asked questions
+      </h2>
+      <Faq entries={faq} />
+    </div>
+    <aside class="contact-card" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>
+        Bug reports, suggestions and questions are all welcome. Replies usually
+        take a day or two.
+      </p>
+      <a class="email" href={`mailto:${site.email}`}>
+        {site.email}
+      </a>
+      <p>For a bug report, it helps to include:</p>
+      <ul>
+        <li>your phone model and its OS version</li>
+        <li>the app version from Settings, About</li>
+        <li>what you did and what you expected to happen</li>
+      </ul>
+    </aside>
+  </section>
+</SiteLayout>

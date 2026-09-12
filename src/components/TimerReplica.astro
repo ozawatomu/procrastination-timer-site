@@ -1,0 +1,126 @@
+---
+import { formatReadout, type Kind } from '../scripts/format';
+import '../styles/replica.css';
+
+interface Props {
+  id: string;
+  theme?: 'light' | 'dark';
+  interactive?: boolean;
+  studyingMs?: number;
+  procrastinatingMs?: number;
+  selected?: Kind;
+  playing?: boolean;
+  labels?: Record<Kind, string>;
+}
+
+const {
+  id,
+  theme = 'dark',
+  interactive = false,
+  studyingMs = 0,
+  procrastinatingMs = 0,
+  selected = 'studying',
+  playing = true,
+  labels = { studying: 'Studying', procrastinating: 'Procrastinating' },
+} = Astro.props;
+
+const readout = formatReadout({
+  studying: studyingMs,
+  procrastinating: procrastinatingMs,
+});
+const kinds: Kind[] = ['studying', 'procrastinating'];
+const Panel = interactive ? 'button' : 'div';
+---
+
+<div
+  class="replica"
+  id={id}
+  data-timer-replica
+  data-theme={theme}
+  data-interactive={interactive ? '' : undefined}
+  data-studying-ms={studyingMs}
+  data-procrastinating-ms={procrastinatingMs}
+  data-selected={selected}
+  data-playing={String(playing)}
+>
+  <div class="rp-screen">
+    {kinds.map((kind) => (
+      <Panel
+        class:list={[
+          'rp-panel',
+          `rp-${kind}`,
+          { 'is-selected': kind === selected },
+        ]}
+        data-panel={kind}
+        type={interactive ? 'button' : undefined}
+        aria-pressed={
+          (interactive ? String(kind === selected) : undefined) as
+            'true' | 'false' | undefined
+        }
+      >
+        <span class="rp-readout" data-readout={kind} aria-hidden="true">
+          {readout[kind]}
+        </span>
+        <span class="rp-label" data-label>
+          {labels[kind]}
+        </span>
+        <span class="sr-only" data-state>
+          {kind === selected && playing ? 'counting' : 'paused'}
+        </span>
+        <span class="rp-caption" aria-hidden="true" />
+      </Panel>
+    ))}
+    {interactive && (
+      <div class="rp-controls">
+        <button
+          class="rp-side rp-options"
+          type="button"
+          data-theme-toggle
+          aria-label="Switch light and dark theme"
+        >
+          <svg viewBox="0 0 896 896" aria-hidden="true">
+            <circle cx="256" cy="448" r="48" />
+            <circle cx="448" cy="448" r="48" />
+            <circle cx="640" cy="448" r="48" />
+          </svg>
+        </button>
+        <button
+          class="rp-play"
+          type="button"
+          data-play
+          aria-label={playing ? 'Pause' : 'Play'}
+        >
+          <svg viewBox="0 0 896 896" aria-hidden="true">
+            <path class="rp-glyph-play" d="M374.1 320 595.8 448 374.1 576Z" />
+            <path
+              class="rp-glyph-pause"
+              d="M288 320h320v80H288zM288 496h320v80H288z"
+            />
+          </svg>
+        </button>
+        <button
+          class="rp-side rp-reset"
+          type="button"
+          data-reset
+          aria-label="Reset timers"
+        >
+          <svg viewBox="0 0 896 896" aria-hidden="true">
+            <path d="M448 544C422.558 543.971 398.14 533.84 380.15 515.85 362.16 497.86 352.029 473.442 352 448h48l-80-80-80 80h48c0 88.22 71.78 160 160 160 21.018.054 41.839-4.059 61.257-12.103 19.418-8.043 37.05-19.857 51.873-34.757l-45.24-45.26c-8.897 8.94-19.478 16.029-31.131 20.855C473.107 541.562 460.613 544.031 448 544Zm160-96c0-88.22-71.78-160-160-160-21.018-.054-41.839 4.059-61.257 12.103-19.418 8.043-37.05 19.857-51.873 34.757l45.24 45.26c13.424-13.427 30.534-22.574 49.155-26.28 18.621-3.705 37.929-1.804 55.47 5.461 17.541 7.265 32.539 19.573 43.087 35.36C538.37 410.447 544.001 429.014 544 448h-48l80 80 80-80Z" />
+          </svg>
+        </button>
+      </div>
+    )}
+  </div>
+  {interactive && <p class="sr-only" role="status" data-status />}
+  {interactive && (
+    <noscript>
+      <p class="rp-noscript">
+        The live demo needs JavaScript. The app itself never touches the
+        network.
+      </p>
+    </noscript>
+  )}
+</div>
+{interactive && <script>
+  import '../scripts/replica';
+</script>}

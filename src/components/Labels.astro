@@ -1,0 +1,45 @@
+---
+const pairs = [
+  ['Thesis', 'Reddit'],
+  ['Revision', 'Netflix'],
+  ['Coding', 'Coffee'],
+];
+---
+
+<section class="section wrap labels" aria-labelledby="labels-title">
+  <div class="section-heading" data-reveal>
+    <p class="eyebrow">Make it yours</p>
+    <h2 id="labels-title">Call them what they really are.</h2>
+    <p>
+      Rename either side in Settings. The app asks two questions: what are you
+      supposed to be doing, and what is your break? Answer honestly and the
+      timer does the rest.
+    </p>
+  </div>
+  <div class="label-card" data-reveal aria-hidden="true">
+    <div class="label-half is-top">
+      <span class="label-prompt is-top">
+        What are you supposed to be doing?
+      </span>
+      <div>
+        <div class="label-time">1:12:40</div>
+        <div class="label-name">
+          {pairs.map(([top]) => (
+            <span>{top}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="label-half is-bottom">
+      <div>
+        <div class="label-time">18:05</div>
+        <div class="label-name">
+          {pairs.map(([, bottom]) => (
+            <span>{bottom}</span>
+          ))}
+        </div>
+      </div>
+      <span class="label-prompt">What is your break?</span>
+    </div>
+  </div>
+</section>
